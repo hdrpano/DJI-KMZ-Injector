@@ -7,7 +7,7 @@
 
 # KMZ Injector for DJI – Installation Guide (Windows & MacOS)
 
-KMZ Injector for DJI allows you to replace mission KMZ files and preview images on DJI RC, DJI RC 2, DJI RC Enterprise, or any Android tablet running DJI Fly.
+KMZ Injector for DJI allows you to replace mission KMZ files and preview images on DJI RC or any Android tablet running DJI Fly.
 ![DJI_ADB](img/window.png)
 
 The application requires **ADB (Android Debug Bridge)** for communication with the device.  
