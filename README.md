@@ -1,3 +1,7 @@
+![Python 3.13](https://img.shields.io/badge/Python-3.13-green.svg)
+![ADB SDK](https://img.shields.io/badge/ADB-SDK-green.svg)
+![license MIT](https://img.shields.io/badge/license-MIT-green.svg)
+
 # KMZ Injector for DJI – Installation Guide (Windows & macOS)
 
 KMZ Injector for DJI allows you to replace mission KMZ files and preview images on DJI RC, DJI RC 2, DJI RC Enterprise, or any Android tablet running DJI Fly.
