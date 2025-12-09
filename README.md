@@ -11,7 +11,7 @@ KMZ Injector for DJI allows you to replace mission KMZ files and preview images 
 ![DJI_ADB](img/window.png)
 
 The application requires **ADB (Android Debug Bridge)** for communication with the device.  
-Because of OS and App Store sandbox restrictions, the application cannot include ADB internally.  
+Because of OS restrictions, the application cannot include ADB internally.  
 You must install ADB manually and select its path inside the app.
 
 ---
