@@ -37,8 +37,8 @@ The tool focuses on reliability, transparency, and predictable behavior across m
 ADB is the fastest and most reliable way to replace missions.
 
 Requirements:
-- ADB installed
-- USB debugging enabled on the DJI RC 2
+- Android devices
+- USB debugging enabled
 
 ADB is recommended if you replace missions frequently or work with large files.
 
