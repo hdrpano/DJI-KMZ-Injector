@@ -167,7 +167,7 @@ DJIKMZInjector is fully compatible with missions created using map-creator.
 If you are looking for a professional DJI waypoint editor, visit:
 
 https://map-creator.com
-![DJI_ADB/MTP](img/map-creator.png)
+![MacOS and iOS map-creator](img/map-creator.png)
 
 ---
 
