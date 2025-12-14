@@ -103,6 +103,8 @@ This ensures the preview always matches the mission stored on the DJI RC 2.
 6. Replace the mission
 7. Preview updates automatically
 
+[![Watch the video](https://img.youtube.com/vi/4UXFrsHNFtw/maxresdefault.jpg)](https://youtu.be/4UXFrsHNFtw)
+
 ---
 
 ## Technical Design Notes
