@@ -45,6 +45,19 @@ Requirements:
 
 ADB is recommended if you replace missions frequently or work with large files.
 
+### Windows Firewall Prompt (ADB)
+
+On first launch, Windows may ask for permission to allow `adb.exe`
+to access the network.
+
+This is normal and required.
+
+ADB opens a **local-only TCP port (127.0.0.1)** to communicate with the
+Android Debug Bridge server. No internet connection is used.
+
+Please allow access for **private networks**.
+The prompt will only appear once.
+
 ---
 
 ### MTP (macOS and Windows)
