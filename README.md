@@ -76,8 +76,6 @@ Limitations:
 
 ## Important macOS MTP Information
 
-macOS does not provide a stable native MTP API comparable to ADB.
-
 Reliable MTP mission replacement on macOS required:
 - Handling delayed file visibility
 - Working around filesystem caching
@@ -88,8 +86,15 @@ Reliable MTP mission replacement on macOS required:
 The macOS MTP integration required several full days of development and testing
 to reach a stable and user-friendly result.
 
-The application automatically releases USB access when required.
-No dialogs, no user interaction, and no manual process handling are needed.
+### macOS MTP Stability
+
+macOS does not properly release USB MTP access when media-related apps
+such as Preview, Photos or Image Capture have accessed the device.
+
+This often causes MTP tools (including OpenMTP) to fail until the Mac is rebooted.
+
+DJIKMZInjector automatically detects and terminates known macOS processes
+that block USB MTP access, allowing a reliable connection without rebooting.
 
 ---
 
