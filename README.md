@@ -17,6 +17,8 @@ The tool focuses on reliability, transparency, and predictable behavior across m
 You can find the last compiled release here:
 [DJI-KMZ-Injector Release](https://github.com/hdrpano/DJI-KMZ-Injector/releases)
 
+---
+
 ## Features
 
 - Replace DJI waypoint missions (.kmz) by UUID
