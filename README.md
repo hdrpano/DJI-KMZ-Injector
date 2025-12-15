@@ -9,7 +9,7 @@
 # DJIKMZInjector
 
 DJIKMZInjector is a lightweight desktop tool to replace DJI waypoint missions (KMZ)
-on the DJI RC 2 using either ADB or MTP.
+on the DJI RC 2 using MTP. You can use ADB for Android devices.
 
 The tool focuses on reliability, transparency, and predictable behavior across macOS and Windows.
 ![DJI_ADB/MTP](img/MacOS.png)
