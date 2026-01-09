@@ -179,6 +179,10 @@ and reliable workflow.
 - Ensure the UUID exists on the device
 - Try ADB mode if available
 
+### DJI RC 2 firmware update
+
+- After DJI RC firmware updates, always reboot the controller before using MTP or ADB.
+
 ---
 
 ## map-creator Compatibility
