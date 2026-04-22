@@ -35,7 +35,7 @@ You can find the last compiled release here:
 
 ## Connection Modes
 
-### ADB (Recommended)
+### ADB (Recommended only for Android devices, not DJI RC2)
 
 ADB is the fastest and most reliable way to replace missions.
 
@@ -60,7 +60,7 @@ The prompt will only appear once.
 
 ---
 
-### MTP (macOS and Windows)
+### MTP for DJI RC2 (macOS and Windows)
 
 MTP allows mission replacement without enabling developer mode.
 
