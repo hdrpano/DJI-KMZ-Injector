@@ -41,7 +41,7 @@ You can find the latest compiled release here:
 The new native iOS backend allows direct mission management on iPhone and iPad devices.
 
 Features:
-- Direct mission creation without replacing existing missions
+- Direct mission creation without replacing existing missions **(close DJI FLY first)**
 - Automatic connection on application startup
 - Native Apple device communication
 - Full mission database access
