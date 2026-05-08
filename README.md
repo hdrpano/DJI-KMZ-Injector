@@ -1,20 +1,22 @@
 ![Python 3.13](https://img.shields.io/badge/Python-3.13-green.svg)
 ![PyQt5](https://img.shields.io/badge/PyQT5-green.svg)
-![ADB](https://img.shields.io/badge/ADB-green.svg)
-![MTP](https://img.shields.io/badge/MTP-green.svg)
+![ADB](https://img.shields.io/badge/ADB-supported-green.svg)
+![MTP](https://img.shields.io/badge/MTP-supported-green.svg)
+![iOS](https://img.shields.io/badge/iOS-supported-green.svg)
 ![license MIT](https://img.shields.io/badge/license-MIT-green.svg)
-![platform Windows](https://img.shields.io/badge/platform-Windows-lightgrey.svg) 
-![platform MacOS](https://img.shields.io/badge/platform-MacOS-lightgrey.svg) 
+![platform Windows](https://img.shields.io/badge/platform-Windows-lightgrey.svg)
+![platform MacOS](https://img.shields.io/badge/platform-MacOS-lightgrey.svg)
 
 # DJIKMZInjector
 
-DJIKMZInjector is a lightweight desktop tool to replace DJI waypoint missions (KMZ)
-on the DJI RC 2 using MTP. You can use ADB for Android devices.
+DJIKMZInjector is a lightweight desktop tool to manage DJI waypoint missions (.kmz)
+on DJI RC controllers and mobile devices using ADB, MTP, and native iOS integration.
 
 The tool focuses on reliability, transparency, and predictable behavior across macOS and Windows.
+
 ![DJI_ADB/MTP](img/MacOS.png)
 
-You can find the last compiled release here:
+You can find the latest compiled release here:
 [DJI-KMZ-Injector Release](https://github.com/hdrpano/DJI-KMZ-Injector/releases)
 
 ---
@@ -22,9 +24,8 @@ You can find the last compiled release here:
 ## Features
 
 - Replace DJI waypoint missions (.kmz) by UUID
-- Two connection modes:
-  - ADB (fast and very reliable)
-  - MTP (no developer mode required)
+- Native iOS mission creation support on macOS
+- Automatic device detection and connection
 - Automatic preview image handling
 - Safe DJI-compatible mission replacement
 - Works on macOS and Windows
@@ -33,65 +34,94 @@ You can find the last compiled release here:
 
 ---
 
-## Connection Modes
+## Supported Connection Modes
 
-### ADB (Recommended only for Android devices, not DJI RC2)
+### iOS Backend (macOS)
 
-ADB is the fastest and most reliable way to replace missions.
+The new native iOS backend allows direct mission management on iPhone and iPad devices.
+
+Features:
+- Direct mission creation without replacing existing missions
+- Automatic connection on application startup
+- Native Apple device communication
+- Full mission database access
+- Automatic mission synchronization
+- No jailbreak or developer mode required
+
+Advantages:
+- Create completely new missions directly from macOS
+- Read DJI mission metadata and previews
+- Faster and more reliable than manual file workflows
+
+---
+
+### MTP Backend (Android and DJI RC Controllers)
+
+MTP is now the default backend for Android devices and DJI RC controllers.
+
+Advantages:
+- No developer mode required
+- Standard USB file transfer
+- Automatic device detection
+- Works on macOS and Windows
+
+Typical supported devices:
+- DJI RC 2
+- Android phones and tablets
+- DJI controllers using Android-based systems
+
+Limitations:
+- Slower than ADB
+- File visibility delays on some macOS systems
+
+---
+
+### ADB Backend (Optional for Android)
+
+ADB remains available as an advanced backend for Android devices.
+
+ADB is useful for:
+- Power users
+- Large mission transfers
+- Fast repeated testing workflows
 
 Requirements:
 - Android devices
 - USB debugging enabled
 
-ADB is recommended if you replace missions frequently or work with large files.
-
-### Windows Firewall Prompt (ADB)
-
-On first launch, Windows may ask for permission to allow `adb.exe`
-to access the network.
-
-This is normal and required.
-
-ADB opens a **local-only TCP port (127.0.0.1)** to communicate with the
-Android Debug Bridge server. No internet connection is used.
-
-Please allow access for **private networks**.
-The prompt will only appear once.
-
 ---
 
-### MTP for DJI RC2 (macOS and Windows)
+## Automatic Device Detection
 
-MTP allows mission replacement without enabling developer mode.
+DJIKMZInjector automatically detects:
+- iOS devices
+- Android devices
+- DJI RC controllers
 
-Advantages:
-- No ADB required
-- Uses standard USB file transfer
+The correct backend is selected automatically during startup whenever possible.
 
-Limitations:
-- Slower than ADB
-- Requires careful handling on macOS
+This allows a plug-and-play workflow without manual backend configuration.
 
 ---
 
 ## Important macOS MTP Information
 
-Reliable MTP mission replacement on macOS required:
+Reliable MTP mission handling on macOS required:
 - Handling delayed file visibility
 - Working around filesystem caching
 - Managing system processes that lock USB access
 - Implementing retry and timeout logic
-- Strict delete → upload → verify sequencing
+- Strict synchronization and verification
 
-The macOS MTP integration required several full days of development and testing
+The macOS MTP integration required extensive development and testing
 to reach a stable and user-friendly result.
 
-### macOS MTP Stability
+### macOS USB Stability
 
 macOS does not properly release USB MTP access when media-related apps
 such as Preview, Photos or Image Capture have accessed the device.
 
-This often causes MTP tools (including OpenMTP) to fail until the Mac is rebooted.
+This often causes MTP tools to fail until the Mac is rebooted.
 
 DJIKMZInjector automatically detects and terminates known macOS processes
 that block USB MTP access, allowing a reliable connection without rebooting.
@@ -100,88 +130,79 @@ that block USB MTP access, allowing a reliable connection without rebooting.
 
 ## Preview Handling
 
-Preview images are treated as a cache.
+Preview images are treated as a local cache.
 
 Behavior:
-- On first application start, existing previews are reused
-- If a preview is missing, it is pulled from the device
-- After mission replacement or manual refresh, previews are reloaded from the device
+- Existing previews are reused whenever possible
+- Missing previews are downloaded automatically
+- After mission changes or refresh operations, previews are synchronized again
 
-This ensures the preview always matches the mission stored on the DJI RC 2.
+This ensures previews always match the actual missions stored on the device.
 
 ---
 
 ## Typical Workflow
 
-1. Connect the DJI RC 2 via USB
-2. Select ADB or MTP backend
-3. Refresh the mission list
-4. Select a mission by UUID
-5. Select a replacement KMZ file
-6. Replace the mission
-7. Preview updates automatically
+### iOS Workflow (macOS)
 
-Watch the video:
-[![Watch the video](https://img.youtube.com/vi/LUwJ74JaNIQ/maxresdefault.jpg)](https://youtu.be/LUwJ74JaNIQ)
+1. Connect the iPhone or iPad via USB
+2. Launch DJIKMZInjector
+3. Device connects automatically
+4. Create or import missions directly
+5. Synchronize with DJI Fly
+
+### Android / DJI RC Workflow
+
+1. Connect the device via USB
+2. Launch DJIKMZInjector
+3. Backend is selected automatically
+4. Refresh the mission list
+5. Select or replace missions
+6. Preview updates automatically
 
 ---
 
 ## Technical Design Notes
 
-- ADB and MTP are implemented as separate backends
-- The UI never blocks on system dialogs
+- iOS, ADB, and MTP are implemented as independent backends
+- Automatic backend detection on startup
 - Preview files are disposable cache data
-- The mission list is the single source of truth
+- Mission databases are synchronized dynamically
+- UI operations remain responsive during device access
 - macOS MTP behavior is treated as eventually consistent
 
 ---
 
 ## Troubleshooting
 
-### macOS USB Access and Photos App
+### Device not detected
 
-On macOS, the DJI RC 2 is detected as a media device.
-When this happens, Apple’s Photos app or related background services may
-automatically connect to the device.
-
-While Photos is connected, it holds exclusive access to the USB MTP interface.
-This prevents other applications from accessing mission files.
-
-DJIKMZInjector automatically handles this situation:
-
-- If Photos or related media services are using the USB connection,
-  DJIKMZInjector will release USB access automatically.
-- No user interaction is required.
-- The USB connection itself remains active.
-- A device reboot or cable reconnection is **not** necessary.
-
-This behavior allows seamless switching between ADB and MTP using the same USB
-connection and avoids unnecessary reconnects or restarts.
-
-This is expected macOS behavior and is handled intentionally to ensure a smooth
-and reliable workflow.
-
-### Device not detected (MTP)
-
-- Ensure the DJI RC 2 is unlocked
-- Close Photos or other media applications
+- Ensure the device is unlocked
 - Reconnect the USB cable
 - Press Refresh
+- Restart the application if necessary
+
+### macOS Photos App conflicts
+
+On macOS, Apple media applications may lock the USB MTP connection.
+
+DJIKMZInjector automatically handles this by releasing blocking processes
+without requiring a reboot or cable reconnect.
 
 ### Preview does not update
 
 - Press Refresh
-- The preview cache will be rebuilt automatically
+- Preview cache will rebuild automatically
 
 ### Mission replacement fails
 
 - Verify the KMZ file is valid
 - Ensure the UUID exists on the device
-- Try ADB mode if available
+- Try another backend if available
 
-### DJI RC 2 firmware update
+### DJI RC firmware update
 
-- After DJI RC firmware updates, always reboot the controller before using MTP or ADB.
+After DJI RC firmware updates, reboot the controller before using MTP or ADB.
 
 ---
 
@@ -192,6 +213,7 @@ DJIKMZInjector is fully compatible with missions created using map-creator.
 If you are looking for a professional DJI waypoint editor, visit:
 
 https://map-creator.com
+
 ![MacOS and iOS map-creator](img/map-creator.png)
 
 ---
