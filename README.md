@@ -143,6 +143,9 @@ This ensures previews always match the actual missions stored on the device.
 
 ## Typical Workflow
 
+Watch the video:
+[![Watch the video](https://img.youtube.com/vi/LUwJ74JaNIQ/maxresdefault.jpg)](https://youtu.be/LUwJ74JaNIQ)
+
 ### iOS Workflow (macOS)
 
 1. Connect the iPhone or iPad via USB
